@@ -6,7 +6,7 @@ C# wrapper for Ovh REST API and wrapper for OpenStack object storage API
 # Object Storage API based on OpenStack
 
 First of all you need to create user to your cloud account on OVH. You can do it here
-![addUser](https://lh4.googleusercontent.com/-CtmmUwEfgQAkTvgkywLgWU9gryzHn6pgPLNE9fzbXOVcrWu0c0FCuJEihVNcdI47SLm4BIEWVKXUh2xYa7D=w1920-h900)
+![addUser](https://lh4.googleusercontent.com/-CtmmUwEfgQAkTvgkywLgWU9gryzHn6pgPLNE9fzbXOVcrWu0c0FCuJEihVNcdI47SLm4BIEWVKXUh2xYa7D=w1920-h900) <br>
 After this go to: https://horizon.cloud.ovh.net and log in.
 Now go to API Access section and click "View Credentials"
 Project ID is your tenant id.
@@ -81,5 +81,4 @@ string ServiceName = ""; // Project ID visible in Cloud tab in ovh site
 
 var ovh = new OvhWrapper("ovh-eu", ApplicationKey, ApplicationSecret, ConsumerKey, ServiceName);
 var meUser = ovh.Get<Nichandle>("/me");
-var storages = ovh.Get<List<Container>>("/cloud/project/{serviceName}/storage");
 ```
