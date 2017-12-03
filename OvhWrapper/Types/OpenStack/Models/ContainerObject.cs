@@ -116,14 +116,14 @@ namespace OvhWrapper.Types.OpenStack.Models
         /// <returns></returns>
         public bool Copy(string containerName, string fileName, string containerNameToPaste)
         {
-            var request = new RestRequest("/{containerName}/{fileName}", Method.PUT);
-            request.AddUrlSegment("containerName", containerNameToPaste);
+            var request = new RestRequest("/{containerName}/{fileName}", Method.COPY);
+            request.AddUrlSegment("containerName", containerName);
             request.AddUrlSegment("fileName", fileName);
 
             request.AddHeader("Accept", "application/json");
             request.AddHeader("X-Auth-Token", Access.Token.Id);
-            request.AddHeader("X-Copy-From", string.Format("{0}/{1}", containerName, fileName));
-            request.AddHeader("Content-Length", "0");
+
+            request.AddHeader("Destination", string.Format("{0}/{1}", containerNameToPaste, fileName));
 
             var response = Client.Execute(request);
             return OvhStorage.ResponseError(response);
